@@ -1,11 +1,11 @@
-import { Route, Routes } from "react-router-dom"
-import MainPage from "./pages"
-import Layout from "./components/Layout"
-import ArticlePage from "./pages/ArticlePage"
-import AdvancedSearchPage from "./pages/AdvancedSearchPage"
-import NotFound from "./pages/NotFound"
+import { Route, Routes } from "react-router-dom";
+import MainPage from "./pages";
+import Layout from "./components/Layout";
+import ArticlePage from "./pages/ArticlePage";
+import AdvancedSearchPage from "./pages/AdvancedSearchPage";
+import NotFound from "./pages/NotFound";
 function App() {
-  return(
+  return (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<MainPage />} />
@@ -15,7 +15,7 @@ function App() {
       </Route>
       <Route path="/advanced-search" element={<AdvancedSearchPage />} />
     </Routes>
-  )
+  );
 }
 
-export default App
+export default App;

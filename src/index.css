@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 body {
   background-color: #eee;
 }
@@ -10,7 +9,6 @@ body {
 input {
   outline: none;
 }
-
 
 .checkbox {
   width: 15px;

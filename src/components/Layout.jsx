@@ -4,10 +4,10 @@ import Header from "./Header";
 const Layout = () => {
   return (
     <div className="p-4">
-    <Header />
-    <Outlet />
+      <Header />
+      <Outlet />
     </div>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;
