@@ -13,12 +13,12 @@ const Header = () => {
           <button role="button" onClick={handleSearchBar} className="text-xl">
             <FiSearch />
           </button>
-          {/* <Link to='/'> */}
-          <p className="text-lg font-semibold">Home</p>
-          {/* </Link> */}
-          {/* <Link to='/advanced-search'> */}
-          <p className="text-lg font-semibold">Advanced search</p>
-          {/* </Link> */}
+          <Link to="/">
+            <p className="text-lg font-semibold">Home</p>
+          </Link>
+          <Link to="/advanced-search">
+            <p className="text-lg font-semibold">Advanced search</p>
+          </Link>
         </nav>
       )}
       {searchBar && <Search handleSearchBar={handleSearchBar} />}

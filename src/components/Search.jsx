@@ -50,7 +50,6 @@ const Search = ({ handleSearchBar }) => {
       />
       {search && (
         <button
-          testid="clearSearch"
           onClick={handleClearSearch}
           title="Clear search"
           className="text-lg"
@@ -68,7 +67,7 @@ const Search = ({ handleSearchBar }) => {
       </button>
       {search && (
         <div
-          testid="searchResult"
+          role="list"
           className="p-2 absolute right-0 z-50 bg-white w-full top-[100%] mt-2 flex flex-col gap-2 max-h-[400px] overflow-y-auto"
         >
           {searchResult.length > 0 ? (

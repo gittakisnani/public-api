@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import { BrowserRouter } from "react-router-dom";
 import { describe, it } from "vitest";
 import Article from "./Article";
 
@@ -99,7 +100,11 @@ describe("Article", () => {
   };
 
   it("Should render Article component correctly", () => {
-    render(<Article article={testArticle} />);
+    render(
+      <BrowserRouter>
+        <Article article={testArticle} />
+      </BrowserRouter>
+    );
 
     expect(screen.getByRole("img")).toHaveAttribute(
       "src",
