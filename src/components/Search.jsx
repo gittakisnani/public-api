@@ -3,6 +3,7 @@ import useDebounce from "../hooks/useDebounce";
 import { FaTimes } from "react-icons/fa";
 import axios from "../api/axios";
 import SearchResult from "./SearchResult";
+import Loading from "./Loading";
 const Search = ({ handleSearchBar }) => {
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
@@ -35,16 +36,13 @@ const Search = ({ handleSearchBar }) => {
   }, [debouncedSearch]);
 
   return (
-    <form
-      role="search"
-      className="relative w-full flex gap-2 border-b border-b-slate-700"
-    >
+    <form role="search" className="w-full flex gap-2">
       {/* <label className='absolute left-[10000px]'>Search here</label> */}
       <input
         value={search}
         onChange={handleSearch}
         role="searchbox"
-        className="p-2 bg-transparent flex-1"
+        className="bg-transparent flex-1"
         placeholder="Search here"
         type="text"
       />
@@ -68,14 +66,20 @@ const Search = ({ handleSearchBar }) => {
       {search && (
         <div
           role="list"
-          className="p-2 absolute right-0 z-50 bg-white w-full top-[100%] mt-2 flex flex-col gap-2 max-h-[400px] overflow-y-auto"
+          className="p-4 absolute right-0 z-50 bg-white shadow-2xl w-full top-[100%] mt-2 flex flex-col gap-2 h-[400px] overflow-y-auto"
         >
           {searchResult.length > 0 ? (
             searchResult.map((article) => (
-              <SearchResult key={article?.objectID} article={article} />
+              <SearchResult
+                onClick={handleSearchBar}
+                key={article?.objectID}
+                article={article}
+              />
             ))
           ) : (
-            <p>Loading...</p>
+            <p>
+              <Loading title="Fetching articles" />
+            </p>
           )}
         </div>
       )}

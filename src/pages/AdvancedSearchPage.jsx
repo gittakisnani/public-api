@@ -15,12 +15,12 @@ const AdvancedSearchPage = () => {
     isHighlight: false,
     isPublicDomain: true,
     hasImages: true,
-    accessionYear: "",
-    department: "",
-    country: "",
-    city: "",
-    classification: "",
-    tags: "",
+    isOnView: true,
+    dateBegin: "",
+    dateEnd: "",
+    departmentId: "",
+    medium: "",
+    geoLocation: "",
   });
 
   const handleShowFilters = () => setFilters(!filters);
@@ -35,7 +35,7 @@ const AdvancedSearchPage = () => {
 
   const buildRequestUrl = () => {
     return Object.entries(advancedFilters)
-      .filter(([key, value]) => key !== "tags")
+      .filter(([key, value]) => key !== "medium")
       .map(([key, value]) => (value ? `${key}=${value}&` : ""))
       .join("");
   };
@@ -46,7 +46,11 @@ const AdvancedSearchPage = () => {
     try {
       setLoading(true);
       const { data: IDs } = await axios.get(
-        `search?${buildRequestUrl()}q=${searchRef.current.value}`
+        `search?${
+          advancedFilters.medium
+            ? `medium=${advancedFilters.medium.trim().replaceAll(/\s+/g, "|")}&`
+            : ""
+        }${buildRequestUrl()}q=${searchRef.current.value || "a"}`
       );
       for (const id of IDs.objectIDs.slice(0, 20)) {
         const { data: article } = await axios.get(`objects/${id}`);
@@ -66,11 +70,12 @@ const AdvancedSearchPage = () => {
       isHighlight: false,
       isPublicDomain: true,
       hasImages: true,
-      accessionYear: "",
-      department: "",
-      country: "",
-      city: "",
-      classification: "",
+      isOnView: true,
+      dateBegin: "",
+      dateEnd: "",
+      departmentId: "",
+      medium: "",
+      geoLocation: "",
       tags: "",
     });
     setFilters(false);
@@ -110,15 +115,33 @@ const AdvancedSearchPage = () => {
         </form>
       </header>
       <h2 className="font-semibold text-xl mb-4 ">Articles</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2">
-        {articles.length
-          ? articles.map((article) => (
-              <Article key={article} article={article} />
-            ))
-          : !loading
-          ? "No articles match"
-          : "Loading..."}
-      </div>
+      {articles.length ? (
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-8">
+          <div className="flex flex-col gap-4 md:gap-8">
+            {articles.slice(0, articles.length / 3).map((article) => (
+              <Article key={article?.objectID} article={article} />
+            ))}
+          </div>
+          <div className="flex flex-col gap-4 md:gap-8">
+            {articles
+              .slice(articles.length / 3, (2 * articles.length) / 3)
+              .map((article) => (
+                <Article key={article?.objectID} article={article} />
+              ))}
+          </div>
+          <div className="flex flex-col gap-4 md:gap-8">
+            {articles
+              .slice((2 * articles.length) / 3, articles.length)
+              .map((article) => (
+                <Article key={article?.objectID} article={article} />
+              ))}
+          </div>
+        </div>
+      ) : !loading ? (
+        "No articles match"
+      ) : (
+        "Loading..."
+      )}
     </main>
   );
 };

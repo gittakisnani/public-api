@@ -7,18 +7,21 @@ const Header = () => {
   const [searchBar, setSearchBar] = useState(false);
   const handleSearchBar = () => setSearchBar(!searchBar);
   return (
-    <header role="contentinfo" className="flex gap-2 items-center">
+    <header
+      role="contentinfo"
+      className="flex border-b gap-2 items-center p-4 sticky top-0 bg-white shadow-2xl shadow-gray-50"
+    >
       {!searchBar && (
         <nav className="flex gap-4 items-center flex-grow justify-end">
-          <button role="button" onClick={handleSearchBar} className="text-xl">
-            <FiSearch />
-          </button>
           <Link to="/">
             <p className="text-lg font-semibold">Home</p>
           </Link>
           <Link to="/advanced-search">
             <p className="text-lg font-semibold">Advanced search</p>
           </Link>
+          <button role="button" onClick={handleSearchBar} className="text-xl">
+            <FiSearch />
+          </button>
         </nav>
       )}
       {searchBar && <Search handleSearchBar={handleSearchBar} />}

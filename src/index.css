@@ -1,9 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-  background-color: #eee;
+  background-color: white;
+  font-family: "Quicksand", sans-serif;
 }
 
 input {

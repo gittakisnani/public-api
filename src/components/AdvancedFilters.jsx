@@ -50,70 +50,74 @@ const AdvancedFilters = ({
           />
           With Images
         </label>
-        <label htmlFor="accessionYear" className="flex flex-col gap-2">
+        <label htmlFor="isOnView" className="flex items-center gap-2">
           <input
-            value={advancedFilters.accessionYear}
+            checked={advancedFilters?.isOnView}
             onChange={handleAdvancedFilters}
-            placeholder="Accession Year"
-            type="number"
-            className="p-1 border-b"
-            name="accessionYear"
-            id="accessionYear"
+            type="checkbox"
+            name="isOnView"
+            id="isOnView"
+            className="checkbox"
           />
+          On View
         </label>
-        <label htmlFor="department" className="flex flex-col gap-2">
+        <label htmlFor="departmentId" className="flex flex-col gap-2">
           <input
             value={advancedFilters.department}
             onChange={handleAdvancedFilters}
-            placeholder="Department"
-            type="text"
+            placeholder="Department ID"
+            type="number"
             className="p-1 border-b"
-            name="department"
-            id="department"
+            name="departmentId"
+            id="departmentId"
           />
         </label>
-        <label htmlFor="country" className="flex flex-col gap-2">
+        <label htmlFor="medium" className="flex flex-col gap-2">
           <input
-            value={advancedFilters.country}
+            value={advancedFilters.medium}
             onChange={handleAdvancedFilters}
-            placeholder="Country"
+            placeholder="Medium"
             type="text"
             className="p-1 border-b"
-            name="country"
-            id="country"
+            name="medium"
+            id="medium"
           />
         </label>
-        <label htmlFor="city" className="flex flex-col gap-2">
+        <label htmlFor="geoLocation" className="flex flex-col gap-2">
           <input
-            value={advancedFilters.city}
+            value={advancedFilters.geoLocation}
             onChange={handleAdvancedFilters}
-            placeholder="City"
+            placeholder="Geo Location"
             type="text"
             className="p-1 border-b"
-            name="city"
-            id="city"
+            name="geoLocation"
+            id="geoLocation"
           />
         </label>
-        <label htmlFor="classification" className="flex flex-col gap-2">
+        <label htmlFor="dateBegin" className="flex flex-col gap-2">
           <input
-            value={advancedFilters.classification}
+            value={advancedFilters.dateBegin}
             onChange={handleAdvancedFilters}
-            placeholder="Classification"
-            type="text"
+            placeholder="Begin Date"
+            type="number"
+            min={1700}
+            max={2199}
             className="p-1 border-b"
-            name="classification"
-            id="classification"
+            name="dateBegin"
+            id="dateBegin"
           />
         </label>
-        <label htmlFor="tags" className="flex flex-col gap-2 md:col-span-2">
+        <label htmlFor="dateEnd" className="flex flex-col gap-2">
           <input
-            value={advancedFilters.tags}
+            value={advancedFilters.dateEnd}
             onChange={handleAdvancedFilters}
-            placeholder="Tags"
-            type="text"
+            placeholder="End Date"
+            type="number"
+            min={1700}
+            max={2199}
             className="p-1 border-b"
-            name="tags"
-            id="tags"
+            name="dateEnd"
+            id="dateEnd"
           />
         </label>
       </div>

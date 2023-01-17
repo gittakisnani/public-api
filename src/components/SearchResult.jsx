@@ -1,15 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const SearchResult = ({ article }) => {
+const SearchResult = ({ article, onClick }) => {
   return (
-    <div className="flex gap-2 items-center">
+    <div onClick={onClick} className="flex gap-2 items-center">
       <div className="rounded-full overflow-hidden h-16 w-16">
         <img
           src={
             article?.primaryImage ||
             article?.primaryImageSmall ||
-            "https://www.pannier.com/wp-content/uploads/article-icon-png-27.png"
+            "https://clipground.com/images/loading-png-10.png"
           }
           alt={article?.title}
           className="object-fill"

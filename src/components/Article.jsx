@@ -2,14 +2,14 @@ import { Link } from "react-router-dom";
 
 const Article = ({ article }) => {
   return (
-    <div className="bg-white p-2 flex flex-col gap-2">
+    <div className="bg-white flex flex-col gap-2">
       <Link to={`/${article.objectID}`}>
         <img
           role="img"
-          className="w-full h-[400px] object-cover"
+          className="w-full max-h-[500px] object-cover"
           src={
             article?.primaryImage ||
-            "https://www.pannier.com/wp-content/uploads/article-icon-png-27.png"
+            "https://clipground.com/images/loading-png-10.png"
           }
           alt={article?.title}
         />
